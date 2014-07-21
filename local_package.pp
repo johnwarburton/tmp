@@ -1,4 +1,3 @@
-warbjoh@labnadm011% cat modules/common/manifests/defines/local_package.pp
 #
 # Description: Wrapper for grafting BLK packages in Solaris & Linux
 #
