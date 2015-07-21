@@ -9,15 +9,10 @@
 #
 #       Notes: * The server needs to have the bond_pair
 #                parameter set in the node classifier, a colon separated list
-#                of the bond name and two NICs to be used for bonding
-#              * All bonds are configured with options: "miimon=100 mode=active-backup"
-#                /usr/share/doc/iputils-20071127/README.bonding
-#              * Warning - this only works for one bond pair for now
 #              * https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/s2-networkscripts-interfaces_network-bridge.html
 #              * Use br-bond0 http://www.slideshare.net/vbannai/neutron-hybrid-openstack-hk
 #
 class base::brbond {
-
     $bond = inline_template('<%= @brbond_pair.split(":")[0] %>')
     $if1  = inline_template('<%= @brbond_pair.split(":")[1] %>')
     $if2  = inline_template('<%= @brbond_pair.split(":")[2] %>')
@@ -74,4 +69,3 @@ class base::brbond {
         content => "alias ${bond} bonding\noptions bonding miimon=100 mode=active-backup\n",
     }
 }
-#PUPPET_LINT
