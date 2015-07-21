@@ -13,7 +13,6 @@
 #              * All bonds are configured with options: "miimon=100 mode=active-backup"
 #                /usr/share/doc/iputils-20071127/README.bonding
 #              * Warning - this only works for one bond pair for now
-#
 class base::bond {
 
     $bond = inline_template('<%= @bond_pair.split(":")[0] %>')
@@ -71,6 +70,5 @@ class base::bond {
         mode    => '0644',
         content => "alias ${bond} bonding\noptions bonding miimon=100 mode=active-backup\n",
     }
-
 }
 #PUPPET_LINT
