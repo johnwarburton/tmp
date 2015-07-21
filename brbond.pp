@@ -53,13 +53,6 @@ class base::brbond {
         }
     }
 
-    # variables of variables
-    # https://blog.kumina.nl/2010/09/puppet-tipstricks-variable-variables/
-    #$iface_addr_ptr = "ipaddress_${if1}"
-    #$iface_addr = inline_template("<%= scope.lookupvar(iface_addr_ptr) %>")
-    #$iface_mask_ptr = "netmask_${if1}"
-    #$iface_mask = inline_template("<%= scope.lookupvar(iface_mask_ptr) %>")
-
     file {"/etc/sysconfig/network-scripts/ifcfg-${bond}":
         owner   => 'root',
         group   => 'root',
@@ -80,6 +73,5 @@ class base::brbond {
         mode    => '0644',
         content => "alias ${bond} bonding\noptions bonding miimon=100 mode=active-backup\n",
     }
-
 }
 #PUPPET_LINT
